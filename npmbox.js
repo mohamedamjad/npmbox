@@ -9,7 +9,7 @@ var box = require("./npmboxxer.js").box;
 var utils = require("./utils.js");
 
 var argv = require("optimist")
-	.boolean(["v","verbose","s","silent"])
+	.boolean(["v","verbose","s","silent","p","json_package"])
 	.argv;
 
 var args = argv._;
@@ -25,6 +25,7 @@ if (args.length<1 || argv.help) {
 	console.log("");
 	console.log("  -v, -verbose         Shows additional output which is normally hidden.");
 	console.log("  -s, -silent          Shows additional output which is normally hidden.");
+	console.log("  -p, -json_package    Boxes all modules in a package.json file");
 	console.log("");
 	process.exit(0);
 }
@@ -32,6 +33,7 @@ if (args.length<1 || argv.help) {
 var options = {
 	verbose: argv.v || argv.verbose || false,
 	silent: argv.s || argv.silent || false,
+	json_package: argv.p || argv.json_package || false,
 };
 
 var sources = args;
